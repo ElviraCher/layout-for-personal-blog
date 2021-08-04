@@ -1,4 +1,5 @@
 const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./src/script.js",
@@ -6,5 +7,12 @@ module.exports = {
     filename: "script.js",
     path: path.resolve(__dirname, "dist"),
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", MiniCssExtractPlugin.loader, "css-loader"],
+      },
+    ],
+  },
 };
-// todo: установить плагины для корректной сборки html и css
