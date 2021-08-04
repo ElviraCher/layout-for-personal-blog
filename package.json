@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "prettier --check . && eslint .",
-    "lint: fix": "prettier --write . && eslint --fix ."
+    "lint: fix": "prettier --write . && eslint --fix .",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,11 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.1",
     "prettier": "^2.3.2"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
   }
 }
