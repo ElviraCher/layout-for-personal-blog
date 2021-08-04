@@ -15,4 +15,3 @@ jobs:
       - name: Lint check
         run: |
           npm run lint
-
