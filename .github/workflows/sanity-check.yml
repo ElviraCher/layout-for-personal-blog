@@ -1,11 +1,18 @@
-on: [pull_request]
+name: PR Sanity Check
+
+on: [pull_request, push]
+
 jobs:
-  jest-run:
-    runs-on: ubuntu-latest
+  lint:
+    runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v1
-      - name: "Install dependencies"
-        run: npm install
-      - name: "Run just tests with coverage"
-        uses: mattallty/jest-github-action@v1
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Packages
+        run: |
+          npm install
+      - name: Lint check
+        run: |
+          npm run lint
 
