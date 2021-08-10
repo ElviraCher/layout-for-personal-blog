@@ -1,0 +1,101 @@
+*
+  padding: 0
+  margin: 0
+  border: 0
+  font-family: monospace
+
+.container
+  margin: 0 2rem 0 2rem
+  height: 100%
+  min-height: 58rem
+  max-width: 100%
+  box-sizing: border-box
+
+.header
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: space-between
+  align-items: center
+  min-height: 2rem
+  background-color: white
+  border: groove 1em mediumblue
+  border-radius: 2em
+
+  &__logo
+    padding: 0 2rem 0
+
+  &__img
+    width: 6rem
+    height: auto
+
+  &__menu
+    padding: 2rem
+    min-width: 5rem
+    max-width: 70%
+
+  &__nav
+    text-decoration: none
+    font-size: 1.5rem
+    padding-left: 5rem
+    color: mediumblue
+
+  &__nav:hover
+    color: orangered
+
+.main-part
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: space-around
+  align-content: flex-start
+  margin: 2rem 15rem 15rem
+
+  &__heading
+    font-size: 1.5rem
+    color: orangered
+    margin-bottom: 1.5rem
+    text-align: center
+    padding: 1rem
+
+  &__heading--first
+    font-size: 6rem
+    color: blue
+    margin: 12rem 0
+    text-shadow: 1.2rem 0.7rem 1rem #999
+
+  &__text
+    font-size: 1.3rem
+    text-align: justify
+    padding: 0 2rem 2rem
+
+  &__text--first
+    font-size: 1.7rem
+    padding: 1.7rem
+
+  &__section
+    background-color: lightblue
+    border-radius: 2rem
+    padding: 1rem
+    margin: 1rem
+    min-width: 5rem
+    max-width: 45%
+    box-shadow: 1.2rem 0.7rem 1rem 0.5rem #999
+
+  &__section--first
+    min-width: 90%
+    max-width: 100%
+    margin-bottom: 10rem
+
+.footer
+  display: block
+  box-sizing: border-box
+  width: 100%
+  min-height: 18rem
+  overflow-x: hidden
+  background-image: url("../img/sezam.jpg")
+
+  &__text
+    font-size: 1.5rem
+    color: white
+    padding: 2rem
