@@ -20,7 +20,7 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env"],
+            presets: [["@babel/preset-env", { targets: "ie 11" }]],
           },
         },
       },
@@ -29,8 +29,8 @@ module.exports = {
         use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
-        test: /\.html$/i,
-        loader: "html-loader",
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
       },
     ],
   },
