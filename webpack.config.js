@@ -5,7 +5,20 @@ module.exports = {
   entry: "./src/script.js",
   plugins: [
     new HtmlWebpackPlugin({
+      filename: "index.html",
       template: "src/index.html",
+    }),
+    new HtmlWebpackPlugin({
+      filename: "blog-list.html",
+      template: "src/blog-list.html",
+    }),
+    new HtmlWebpackPlugin({
+      filename: "story-page.html",
+      template: "src/story-page.html",
+    }),
+    new HtmlWebpackPlugin({
+      filename: "feedback.html",
+      template: "src/feedback.html",
     }),
   ],
   output: {
