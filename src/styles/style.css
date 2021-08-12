@@ -158,12 +158,13 @@
   padding: 15rem;
   overflow-x: hidden;
 }
-.story__header {
+.story__heading {
   padding: 0 0 2rem;
   font-size: 4rem;
   color: orangered;
+  text-shadow: 1.2rem 0.7rem 1rem #999;
 }
-.story__header-mini {
+.story__heading--mini {
   padding-bottom: 2rem;
   font-size: 2.5rem;
   color: mediumblue;
@@ -177,6 +178,103 @@
   padding: 4rem 0 0;
   align-items: center;
   object-fit: contain;
+}
+
+.feedback-form {
+  box-sizing: border-box;
+  margin: 15rem 30rem;
+}
+.feedback-form__heading {
+  padding-bottom: 2rem;
+  font-size: 4rem;
+  color: orangered;
+  text-align: center;
+  text-shadow: 1.2rem 0.7rem 1rem #999;
+}
+.feedback-form__text {
+  padding-bottom: 3rem;
+  font-size: 1.6rem;
+  color: mediumblue;
+  text-align: center;
+}
+.feedback-form__form {
+  box-sizing: border-box;
+  padding: 2rem;
+  border: 0.1rem solid orangered;
+  border-radius: 3rem;
+  box-shadow: 1.2rem 0.7rem 1rem 0.5rem #999;
+}
+.feedback-form__span {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  padding-bottom: 2rem;
+}
+.feedback-form__span--agreement {
+  max-width: 67%;
+}
+.feedback-form__list {
+  display: block;
+  padding: 1rem;
+}
+.feedback-form__list--agreement {
+  display: flex;
+  justify-content: center;
+}
+.feedback-form__list--button {
+  text-align: center;
+}
+.feedback-form__element {
+  border: 0.2rem solid mediumblue;
+  border-radius: 0.4rem;
+  width: 100%;
+  height: 3rem;
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: bold;
+}
+.feedback-form__element:hover {
+  border: 0.2rem solid orangered;
+}
+.feedback-form__element:focus {
+  border: 0.3rem solid gray;
+}
+.feedback-form__element--textarea {
+  overflow: auto;
+  height: 6rem;
+  resize: none;
+  font-weight: 100;
+  padding: 1rem;
+}
+.feedback-form__element--agreement {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+}
+.feedback-form__element--button {
+  color: mediumblue;
+  width: 11rem;
+  height: 3.5rem;
+  border-radius: 0.4rem;
+  font-size: 1.6rem;
+}
+.feedback-form__element--button:hover {
+  background-color: orangered;
+}
+.feedback-form__span--agreement {
+  max-width: 67%;
+}
+.feedback-form__label {
+  padding: 1rem;
+  position: relative;
+  font-size: 1.3rem;
+}
+.feedback-form__label--agreement {
+  color: orangered;
+}
+.feedback-form__button {
+  text-align: center;
+  padding-top: 2rem;
 }
 
 /*# sourceMappingURL=style.css.map */
