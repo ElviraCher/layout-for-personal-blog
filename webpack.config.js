@@ -1,6 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const glob = require("glob");
 
+const files = glob.sync("src/*.html");
 module.exports = {
   performance: {
     maxEntrypointSize: 512000,
@@ -8,22 +10,13 @@ module.exports = {
   },
   entry: "./src/script.js",
   plugins: [
-    new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: "src/index.html",
-    }),
-    new HtmlWebpackPlugin({
-      filename: "blog-list.html",
-      template: "src/blog-list.html",
-    }),
-    new HtmlWebpackPlugin({
-      filename: "story-page.html",
-      template: "src/story-page.html",
-    }),
-    new HtmlWebpackPlugin({
-      filename: "feedback.html",
-      template: "src/feedback.html",
-    }),
+    ...files.map(
+      (filePath) =>
+        new HtmlWebpackPlugin({
+          filename: `${filePath.replace(/src\//, "")}`,
+          template: `${filePath}`,
+        })
+    ),
   ],
   output: {
     filename: "script.js",
@@ -33,8 +26,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
+        test: /\.js$/,
+        exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
@@ -43,7 +36,7 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/i,
+        test: /\.s?css$/i,
         use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
       },
       {
