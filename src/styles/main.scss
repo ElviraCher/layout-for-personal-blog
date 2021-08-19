@@ -23,7 +23,6 @@
   background-color: white;
   border: groove 1em mediumblue;
   border-radius: 2em;
-}
 
   &__logo {
     padding: 0 2rem 0;
@@ -31,7 +30,9 @@
 
   &__img {
     width: 6rem;
-    height: auto;
+    height: 4.6rem;
+    background-image: url("../img/zeliboba.jpg");
+    background-size: contain;
   }
 
   &__menu {
@@ -45,11 +46,12 @@
     font-size: 1.5rem;
     padding-left: 5rem;
     color: mediumblue;
-  }
 
     &:hover {
       color: orangered;
     }
+  }
+}
 
 .main-part {
   display: flex;
@@ -58,7 +60,6 @@
   justify-content: space-around;
   align-content: flex-start;
   margin: 2rem 15rem 15rem;
-}
 
   &__heading {
     font-size: 1.5rem;
@@ -66,7 +67,6 @@
     margin-bottom: 1.5rem;
     text-align: center;
     padding: 1rem;
-  }
 
     &--first {
       font-size: 6rem;
@@ -74,17 +74,18 @@
       margin: 12rem 0;
       text-shadow: 1.2rem 0.7rem 1rem #999;
     }
+  }
 
   &__text {
     font-size: 1.3rem;
     text-align: justify;
     padding: 0 2rem 2rem;
-  }
 
     &--first {
       font-size: 1.7rem;
       padding: 1.7rem;
     }
+  }
 
   &__section {
     background-color: lightblue;
@@ -94,13 +95,14 @@
     min-width: 5rem;
     max-width: 45%;
     box-shadow: 1.2rem 0.7rem 1rem 0.5rem #999;
-  }
 
     &--first {
       min-width: 90%;
       max-width: 100%;
       margin-bottom: 10rem;
     }
+  }
+}
 
 .footer {
   display: block;
@@ -109,13 +111,13 @@
   min-height: 18rem;
   overflow-x: hidden;
   background-image: url("../img/sezam.jpg");
-}
 
   &__text {
     font-size: 1.5rem;
     color: white;
     padding: 2rem;
   }
+}
 
 .stories-block {
   display: flex;
@@ -124,7 +126,6 @@
   justify-content: space-around;
   align-content: flex-start;
   margin: 5rem 15rem 3rem;
-}
 
   &__section {
     padding: 1rem;
@@ -134,15 +135,15 @@
     max-height: 30%;
     box-shadow: 1.2rem 0.7rem 1rem 0.5rem #999;
     border-radius: 2rem;
-  }
 
     &--main {
       max-width: 100%;
-    }
 
-    &:hover {
-      background-color: lightblue;
+      &:hover {
+        background-color: lightblue;
+      }
     }
+  }
 
   &__href {
     text-decoration: none;
@@ -161,7 +162,6 @@
     font-size: 1rem;
     padding: 2rem 0;
     color: mediumblue;
-  }
 
     &--header {
       color: orangered;
@@ -169,6 +169,8 @@
       font-size: 2rem;
       padding-top: 0;
     }
+  }
+}
 
 .story {
   display: flex;
@@ -176,18 +178,19 @@
   justify-content: space-between;
   padding: 15rem;
   overflow-x: hidden;
-}
+
   &__heading {
     padding: 0 0 2rem;
     font-size: 4rem;
     color: orangered;
     text-shadow: 1.2rem 0.7rem 1rem #999;
-  }
+
     &--mini {
       padding-bottom: 2rem;
       font-size: 2.5rem;
       color: mediumblue;
     }
+  }
 
   &__text {
     padding: 4rem 0 0;
@@ -205,11 +208,11 @@
     align-items: center;
     object-fit: contain;
   }
+}
 
 .feedback-form {
   box-sizing: border-box;
   margin: 15rem 30rem;
-}
 
   &__heading {
     padding-bottom: 2rem;
@@ -239,16 +242,15 @@
     text-align: center;
     width: 100%;
     padding-bottom: 2rem;
-  }
 
     &--agreement {
       max-width: 67%;
     }
+  }
 
   &__list {
     display: block;
     padding: 1rem;
-  }
 
     &--agreement {
       display: flex;
@@ -258,6 +260,7 @@
     &--button {
       text-align: center;
     }
+  }
 
   &__element {
     border: 0.2rem solid mediumblue;
@@ -267,7 +270,6 @@
     box-sizing: border-box;
     text-align: center;
     font-weight: bold;
-  }
 
     &:hover {
       border: 0.2rem solid orangered;
@@ -297,27 +299,26 @@
       height: 3.5rem;
       border-radius: 0.4rem;
       font-size: 1.6rem;
-    }
 
       &:hover {
         background-color: orangered;
       }
-
-  &__span--agreement {
-    max-width: 67%;
+    }
   }
 
   &__label {
     padding: 1rem;
     position: relative;
     font-size: 1.3rem;
-  }
 
     &--agreement {
       color: orangered;
     }
+  }
 
   &__button {
     text-align: center;
     padding-top: 2rem;
   }
+}
+
