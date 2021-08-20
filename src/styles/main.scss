@@ -206,6 +206,33 @@
   &__container {
     margin-left: auto;
     margin-right: auto;
+    margin-top: 4rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    max-height: 40rem;
+    padding: 4rem 0 0;
+    align-items: center;
+    object-fit: contain;
+
+    &-1 {
+      min-width: 55rem;
+      min-height: 40rem;
+      background-image: url("../img/little-prince.jpg");
+    }
+
+    &-2 {
+      min-width: 33rem;
+      min-height: 39.5rem;
+      background-image: url("../img/lp-and-rose.jpg");
+    }
+
+    &-3 {
+      min-width: 55rem;
+      min-height: 35rem;
+      background-image: url("../img/lp-and-fox.jpg");
+    }
+
   }
 
   &__picture {
