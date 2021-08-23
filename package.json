@@ -57,7 +57,8 @@
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix",
-    "*.{js,css,md,yml,html}": "prettier --write"
+    "*.{js,css,scss,md,yml,html}": "prettier --write",
+    "*.scss": "stylelint --fix \"**/*.scss\""
   },
   "dependencies": {
     "autoprefixer": "^10.3.1"
