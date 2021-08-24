@@ -295,7 +295,11 @@
   }
 
   &__form {
-    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 40rem;
+    min-height: 40rem;
     padding: 2rem;
     border: 0.1rem solid orangered;
     border-radius: 3rem;
