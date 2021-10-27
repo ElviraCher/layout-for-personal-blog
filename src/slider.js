@@ -1,19 +1,7 @@
 function createSlider() {
-  const slides = document.querySelectorAll(".slider__picture");
-
-  function hideAllSlides() {
-    const slidesArr = Array.prototype.slice.call(slides);
-    for (let i = 0; i < slidesArr.length; i += 1) {
-      slidesArr[i].style.display = "none";
-    }
-  }
-
-  function showCertainSlide(i) {
-    const arr = Array.prototype.slice.call(slides);
-    const shownPicture = arr.splice(i, 1);
-    console.log(shownPicture);
-    shownPicture[0].style.display = "block";
-  }
+  const slides = this.querySelectorAll(".slider__picture");
+  const slidesArr = Array.prototype.slice.call(slides);
+  let currentSlideNumber = 0;
 
   const slide = this.querySelector(".slider");
   const prev = document.createElement("button");
@@ -25,31 +13,102 @@ function createSlider() {
   slide.appendChild(prev);
   slide.appendChild(next);
 
-  let i = 0;
+  function hideAllSlides() {
+    for (let i = 0; i < slidesArr.length; i += 1) {
+      slidesArr[i].classList.add("hidden__slide");
+    }
+  }
+
+  function showCertainSlide(i) {
+    if (slidesArr[i]) {
+      slidesArr[i].classList.toggle("hidden__slide");
+    }
+  }
+
+  function showActiveSliderPoint(i) {
+    const points = document.querySelectorAll(".slider__numbers");
+    const pointsArr = Array.prototype.slice.call(points);
+    if (pointsArr[i]) {
+      pointsArr[i].classList.toggle("slider__numbers-active");
+    }
+  }
+
+  function showNextSlide() {
+    if (currentSlideNumber + 1 === slides.length) {
+      showActiveSliderPoint(currentSlideNumber);
+      currentSlideNumber = 0;
+    } else {
+      currentSlideNumber += 1;
+    }
+
+    hideAllSlides();
+    showCertainSlide(currentSlideNumber);
+    showActiveSliderPoint(currentSlideNumber);
+    showActiveSliderPoint(currentSlideNumber - 1);
+  }
+
+  function showPreviousSlide() {
+    if (currentSlideNumber === 0) {
+      showActiveSliderPoint(currentSlideNumber);
+      currentSlideNumber = slides.length - 1;
+    } else {
+      currentSlideNumber -= 1;
+    }
+
+    hideAllSlides();
+    showCertainSlide(currentSlideNumber);
+    showActiveSliderPoint(currentSlideNumber);
+    showActiveSliderPoint(currentSlideNumber + 1);
+  }
+
+  function createSliderPoints() {
+    const pointContainer = document.createElement("div");
+    pointContainer.classList.add("points__container");
+    for (let i = 0; i < slides.length; i += 1) {
+      const point = document.createElement("button");
+      const number = document.createTextNode(`${i}`);
+      pointContainer.appendChild(point);
+      point.appendChild(number);
+      point.classList.add("slider__numbers");
+      slide.appendChild(pointContainer);
+    }
+  }
+
+  function makesDefaultSliderPoints() {
+    const points = document.querySelectorAll(".slider__numbers");
+    const pointsArr = Array.prototype.slice.call(points);
+
+    for (let i = 0; i < pointsArr.length; i += 1) {
+      const pointToChange = pointsArr[i].classList.contains(
+        "slider__numbers-active"
+      );
+      if (pointToChange) {
+        pointsArr[i].classList.remove("slider__numbers-active");
+      }
+    }
+  }
 
   hideAllSlides();
-  showCertainSlide(i);
+  showCertainSlide(currentSlideNumber);
+  createSliderPoints();
+  showActiveSliderPoint(currentSlideNumber);
 
-  next.addEventListener("click", () => {
-    if (i + 1 === slides.length) {
-      i = 0;
-    } else {
-      i += 1;
+  next.addEventListener("click", showNextSlide);
+
+  prev.addEventListener("click", showPreviousSlide);
+
+  const pointContainer = document.querySelector(".points__container");
+
+  pointContainer.addEventListener("click", (event) => {
+    const {target} = event;
+    const number = target.innerText;
+    if (target.tagName === "BUTTON" && number) {
+      hideAllSlides();
+      showCertainSlide(number);
+      makesDefaultSliderPoints();
+      showActiveSliderPoint(number);
     }
-
-    hideAllSlides();
-    showCertainSlide(i);
-  });
-
-  prev.addEventListener("click", () => {
-    if (i === 0) {
-      i = slides.length - 1;
-    } else {
-      i -= 1;
-    }
-
-    hideAllSlides();
-    showCertainSlide(i);
   });
 }
+
 document.addEventListener("DOMContentLoaded", createSlider);
