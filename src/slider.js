@@ -25,40 +25,51 @@ function createSlider() {
     }
   }
 
+  function makesDefaultSliderPoints() {
+    const points = document.querySelectorAll(".slider__numbers");
+    const pointsArr = Array.prototype.slice.call(points);
+
+    for (let i = 0; i < pointsArr.length; i += 1) {
+      const pointToChange = pointsArr[i].classList.contains(
+        "slider__numbers-active"
+      );
+      if (pointToChange) {
+        pointsArr[i].classList.remove("slider__numbers-active");
+      }
+    }
+  }
+
   function showActiveSliderPoint(i) {
     const points = document.querySelectorAll(".slider__numbers");
     const pointsArr = Array.prototype.slice.call(points);
     if (pointsArr[i]) {
-      pointsArr[i].classList.toggle("slider__numbers-active");
+      pointsArr[i].classList.add("slider__numbers-active");
     }
+  }
+
+  function initSlideAntPointChange(slideNumber) {
+    hideAllSlides();
+    showCertainSlide(slideNumber);
+    makesDefaultSliderPoints();
+    showActiveSliderPoint(slideNumber);
   }
 
   function showNextSlide() {
     if (currentSlideNumber + 1 === slides.length) {
-      showActiveSliderPoint(currentSlideNumber);
       currentSlideNumber = 0;
     } else {
       currentSlideNumber += 1;
     }
-
-    hideAllSlides();
-    showCertainSlide(currentSlideNumber);
-    showActiveSliderPoint(currentSlideNumber);
-    showActiveSliderPoint(currentSlideNumber - 1);
+    initSlideAntPointChange(currentSlideNumber);
   }
 
   function showPreviousSlide() {
     if (currentSlideNumber === 0) {
-      showActiveSliderPoint(currentSlideNumber);
       currentSlideNumber = slides.length - 1;
     } else {
       currentSlideNumber -= 1;
     }
-
-    hideAllSlides();
-    showCertainSlide(currentSlideNumber);
-    showActiveSliderPoint(currentSlideNumber);
-    showActiveSliderPoint(currentSlideNumber + 1);
+    initSlideAntPointChange(currentSlideNumber);
   }
 
   function createSliderPoints() {
@@ -74,41 +85,25 @@ function createSlider() {
     }
   }
 
-  function makesDefaultSliderPoints() {
-    const points = document.querySelectorAll(".slider__numbers");
-    const pointsArr = Array.prototype.slice.call(points);
-
-    for (let i = 0; i < pointsArr.length; i += 1) {
-      const pointToChange = pointsArr[i].classList.contains(
-        "slider__numbers-active"
-      );
-      if (pointToChange) {
-        pointsArr[i].classList.remove("slider__numbers-active");
-      }
+  function changeActiveSliderPoint(event) {
+    const { target } = event;
+    const number = +target.innerText;
+    if (target.tagName === "BUTTON") {
+      currentSlideNumber = number;
+      initSlideAntPointChange(currentSlideNumber);
     }
   }
 
-  hideAllSlides();
-  showCertainSlide(currentSlideNumber);
   createSliderPoints();
-  showActiveSliderPoint(currentSlideNumber);
+  initSlideAntPointChange(currentSlideNumber);
 
   next.addEventListener("click", showNextSlide);
 
   prev.addEventListener("click", showPreviousSlide);
 
-  const pointContainer = document.querySelector(".points__container");
+  const pointContainer = this.querySelector(".points__container");
 
-  pointContainer.addEventListener("click", (event) => {
-    const {target} = event;
-    const number = target.innerText;
-    if (target.tagName === "BUTTON" && number) {
-      hideAllSlides();
-      showCertainSlide(number);
-      makesDefaultSliderPoints();
-      showActiveSliderPoint(number);
-    }
-  });
+  pointContainer.addEventListener("click", changeActiveSliderPoint);
 }
 
 document.addEventListener("DOMContentLoaded", createSlider);
