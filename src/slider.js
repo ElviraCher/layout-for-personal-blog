@@ -26,24 +26,24 @@ function createSlider() {
   }
 
   function makesDefaultSliderPoints() {
-    const points = document.querySelectorAll(".slider__numbers");
+    const points = document.querySelectorAll(".slider__points");
     const pointsArr = Array.prototype.slice.call(points);
 
     for (let i = 0; i < pointsArr.length; i += 1) {
       const pointToChange = pointsArr[i].classList.contains(
-        "slider__numbers-active"
+        "slider__points-active"
       );
       if (pointToChange) {
-        pointsArr[i].classList.remove("slider__numbers-active");
+        pointsArr[i].classList.remove("slider__points-active");
       }
     }
   }
 
   function showActiveSliderPoint(i) {
-    const points = document.querySelectorAll(".slider__numbers");
+    const points = document.querySelectorAll(".slider__points");
     const pointsArr = Array.prototype.slice.call(points);
     if (pointsArr[i]) {
-      pointsArr[i].classList.add("slider__numbers-active");
+      pointsArr[i].classList.add("slider__points-active");
     }
   }
 
@@ -76,11 +76,11 @@ function createSlider() {
     const pointContainer = document.createElement("div");
     pointContainer.classList.add("points__container");
     for (let i = 0; i < slides.length; i += 1) {
-      const point = document.createElement("button");
+      const point = document.createElement("div");
       const number = document.createTextNode(`${i}`);
       pointContainer.appendChild(point);
       point.appendChild(number);
-      point.classList.add("slider__numbers");
+      point.classList.add("slider__points");
       slide.appendChild(pointContainer);
     }
   }
@@ -88,7 +88,7 @@ function createSlider() {
   function changeActiveSliderPoint(event) {
     const { target } = event;
     const number = +target.innerText;
-    if (target.tagName === "BUTTON") {
+    if (target.tagName === "DIV") {
       currentSlideNumber = number;
       initSlideAntPointChange(currentSlideNumber);
     }
@@ -104,6 +104,8 @@ function createSlider() {
   const pointContainer = this.querySelector(".points__container");
 
   pointContainer.addEventListener("click", changeActiveSliderPoint);
+
+  window.setInterval(showNextSlide, 3000);
 }
 
 document.addEventListener("DOMContentLoaded", createSlider);
