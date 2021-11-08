@@ -1,4 +1,4 @@
-function createSlider() {
+export default function createSlider() {
   const slides = this.querySelectorAll(".slider__picture");
   const slidesArr = Array.prototype.slice.call(slides);
   let currentSlideNumber = 0;
@@ -47,7 +47,7 @@ function createSlider() {
     }
   }
 
-  function initSlideAntPointChange(slideNumber) {
+  function initSlideAndPointChange(slideNumber) {
     hideAllSlides();
     showCertainSlide(slideNumber);
     makesDefaultSliderPoints();
@@ -60,7 +60,7 @@ function createSlider() {
     } else {
       currentSlideNumber += 1;
     }
-    initSlideAntPointChange(currentSlideNumber);
+    initSlideAndPointChange(currentSlideNumber);
   }
 
   function showPreviousSlide() {
@@ -69,7 +69,7 @@ function createSlider() {
     } else {
       currentSlideNumber -= 1;
     }
-    initSlideAntPointChange(currentSlideNumber);
+    initSlideAndPointChange(currentSlideNumber);
   }
 
   function createSliderPoints() {
@@ -90,12 +90,23 @@ function createSlider() {
     const number = +target.innerText;
     if (target.tagName === "DIV") {
       currentSlideNumber = number;
-      initSlideAntPointChange(currentSlideNumber);
+      initSlideAndPointChange(currentSlideNumber);
     }
   }
 
+  function setSliderTimer() {
+    let timerHandle = null;
+
+    if (timerHandle) {
+      window.clearInterval(timerHandle);
+    }
+
+    timerHandle = setInterval(showNextSlide, 3000);
+  }
+
   createSliderPoints();
-  initSlideAntPointChange(currentSlideNumber);
+  initSlideAndPointChange(currentSlideNumber);
+  setSliderTimer();
 
   next.addEventListener("click", showNextSlide);
 
@@ -104,8 +115,6 @@ function createSlider() {
   const pointContainer = this.querySelector(".points__container");
 
   pointContainer.addEventListener("click", changeActiveSliderPoint);
-
-  window.setInterval(showNextSlide, 3000);
 }
 
 document.addEventListener("DOMContentLoaded", createSlider);
