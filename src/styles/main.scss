@@ -389,3 +389,45 @@
     padding-top: 2rem;
   }
 }
+
+@media screen and (max-width: 786px) {
+  .header__menu {
+    padding: 1rem;
+  }
+
+  .header__nav {
+    font-size: 1rem;
+    padding-left: 1rem;
+  }
+
+  .main-part {
+    margin: 0;
+  }
+
+  .main-part__text,
+  .main-part__text--first {
+    font-size: 1rem;
+  }
+
+  .main-part__heading {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .main-part__heading--first {
+    font-size: 4rem;
+    margin: 4rem 0;
+  }
+
+  .main-part__section {
+    max-width: 100%;
+  }
+
+  .main-part__section--first {
+    margin-bottom: 0;
+  }
+
+  .footer {
+    margin: 3rem 0 0;
+  }
+}
