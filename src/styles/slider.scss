@@ -114,9 +114,8 @@
 
   .prev-button,
   .next-button {
-    background:
-      rgba(0, 0, 0, 0)
-      url("https://cdn.svgapi.com/vector/5898/right-arrow.svg");
+    background: url("https://cdn.svgapi.com/vector/5898/right-arrow.svg");
+    background-color: rgba(0, 0, 0, 0);
     border-radius: 0;
     box-shadow: none;
     width: 3rem;
