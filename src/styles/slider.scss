@@ -102,17 +102,6 @@
     }
   }
 
-  .prev-button,
-  .next-button {
-    background:
-      rgba(0, 0, 0, 0)
-      url("https://cdn.svgapi.com/vector/5898/right-arrow.svg");
-    border-radius: 0;
-    box-shadow: none;
-    width: 3rem;
-    height: 3rem;
-  }
-
   .next-button {
     transform: none;
     right: 1rem;
@@ -123,10 +112,20 @@
     left: 1rem;
   }
 
-  .prev-button:active,
-  .next-button:active {
-    opacity: 0.4;
-    width: 3.2rem;
-    height: 3.2rem;
+  .prev-button,
+  .next-button {
+    background:
+      rgba(0, 0, 0, 0)
+      url("https://cdn.svgapi.com/vector/5898/right-arrow.svg");
+    border-radius: 0;
+    box-shadow: none;
+    width: 3rem;
+    height: 3rem;
+
+    &:active {
+      opacity: 0.4;
+      width: 3.2rem;
+      height: 3.2rem;
+    }
   }
 }
