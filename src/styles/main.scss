@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .container {
   margin: 0 2rem 0 2rem;
   height: 100%;
@@ -14,42 +18,55 @@
 }
 
 .header {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
   background-color: white;
+  min-height: 50px;
   border: groove 1em mediumblue;
   border-radius: 2em;
 
+  &__container {
+    margin: 0 auto;
+    max-width: 1200px;
+    display: flex;
+    padding: 0 30px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   &__logo {
-    padding: 0 2rem 0;
-  }
-
-  &__img {
-    width: 6rem;
-    height: 4.6rem;
     background-image: url("../img/zeliboba.jpg");
-    background-size: contain;
+    background-size: cover;
+    background-position: top;
+    border-radius: 50%;
+    display: block;
+    position: relative;
+    z-index: 5;
+    width: 5rem;
+    height: 5rem;
   }
+}
 
-  &__menu {
-    padding: 2rem;
-    min-width: 5rem;
-    max-width: 70%;
-  }
+.menu__icon {
+  display: none;
+}
 
-  &__nav {
-    text-decoration: none;
-    font-size: 1.5rem;
-    padding-left: 5rem;
-    color: mediumblue;
+.menu__list > li {
+  list-style-type: none;
+  position: relative;
+  margin: 0 0 0 20px;
+}
 
-    &:hover {
-      color: orangered;
-    }
+.menu__link {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: mediumblue;
+
+  &:hover {
+    color: orangered;
   }
 }
 
@@ -391,13 +408,108 @@
 }
 
 @media screen and (max-width: 786px) {
-  .header__menu {
-    padding: 1rem;
+  .header {
+    border: none;
+    border-radius: 0;
+
+    &__logo {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
   }
 
-  .header__nav {
-    font-size: 1rem;
-    padding-left: 1rem;
+  .menu__icon {
+    z-index: 5;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    width: 30px;
+    height: 18px;
+  }
+
+  .menu__icon span,
+  .menu__icon::before,
+  .menu__icon::after {
+    left: 0;
+    position: absolute;
+    height: 10%;
+    width: 100%;
+    transition: 0.3s ease 0s;
+    background-color: blue;
+  }
+
+  .menu__icon::before,
+  .menu__icon::after {
+    content: "";
+  }
+
+  .menu__icon::before {
+    top: 0;
+  }
+
+  .menu__icon::after {
+    bottom: 0;
+  }
+
+  .menu__icon span {
+    top: 50%;
+    transform: scale(1) translate(0, -50%);
+  }
+
+  .menu__icon--active span {
+    transform: scale(0) translate(0, -50%);
+  }
+
+  .menu__icon--active::before {
+    top: 50%;
+    transform: rotate(-45deg) translate(0, -50%);
+  }
+
+  .menu__icon--active::after {
+    bottom: 50%;
+    transform: rotate(45deg) translate(0, 50%);
+  }
+
+  .menu__body {
+    position: fixed;
+    text-align: right;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    opacity: 90%;
+    padding: 100px 30px 30px;
+    transition: left 0.3s ease 0s;
+    overflow: auto;
+    border: none;
+
+    &--active {
+      left: 0;
+    }
+  }
+
+  .menu__body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 50px;
+    background-color: orangered;
+    z-index: 2;
+  }
+
+  .menu__list > li {
+    margin-bottom: 1.8rem;
+  }
+
+  .menu__list > li:last-child {
+    margin-bottom: 0;
+  }
+
+  .menu__link {
+    font-size: 1.5rem;
   }
 
   .main-part {
@@ -429,5 +541,17 @@
 
   .footer {
     margin: 3rem 0 0;
+    min-height: 3rem;
+  }
+}
+
+@media (min-width: 767px) {
+  .menu__list {
+    display: flex;
+    align-items: center;
+  }
+
+  .menu__list > li {
+    padding: 10px 0;
   }
 }
