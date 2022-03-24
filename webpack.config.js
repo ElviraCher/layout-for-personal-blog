@@ -4,11 +4,7 @@ const glob = require("glob");
 
 const files = glob.sync("src/*.html");
 module.exports = {
-  performance: {
-    maxEntrypointSize: 512000,
-    maxAssetSize: 512000,
-  },
-  entry: "./src/script.js",
+  entry: { script: "./src/script.js", slider: "./src/slider.js" },
   plugins: [
     ...files.map(
       (filePath) =>
@@ -19,7 +15,7 @@ module.exports = {
     ),
   ],
   output: {
-    filename: "script.js",
+    filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
@@ -45,6 +41,10 @@ module.exports = {
         generator: {
           filename: "img/[name][ext]",
         },
+      },
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
       },
     ],
   },
