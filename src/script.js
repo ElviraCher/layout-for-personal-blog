@@ -12,4 +12,17 @@ import "./styles/slider.scss";
       menu.classList.toggle("menu__body--active");
     });
   }
+  function showMessage() {
+    const form = document.querySelector(".feedback-form__form");
+    form.innerHTML = "Спасибо! Ваша заявка принята";
+    form.classList.add("message");
+
+    form.insertAdjacentHTML(
+      "beforeend",
+      `<br><div class="message"><a href="index.html">Вернуться на главную</a></div>`
+    );
+  }
+
+  const button = document.querySelector(".feedback-form__element--button");
+  button.addEventListener("click", showMessage);
 })();
